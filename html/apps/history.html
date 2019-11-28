@@ -1,0 +1,108 @@
+
+{% extends "apps/base.html" %}
+{% block body_block %}
+<div class="container">
+  <div class="jumbotron">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center" scope="col">Main Key</th>
+                    <th class="text-center" scope="col">Purpose</th>                    
+                    <th class="text-center" scope="col">Email</th>
+                    <th class="text-center" scope="col">Key Type</th>
+                    <th class="text-center" scope="col">Key Size</th>
+                    <th class="text-center" scope="col">Private Key</th>
+                    <th class="text-center" scope="col">Public Key</th>
+                    <th class="text-center" scope="col">Date Time</th>
+                    <th class="text-center" scope="col">Expire Date</th>
+                </tr>
+            </thead>  
+            <tbody>
+                {% for kunci in pairkey %}
+                    <tr>
+                        <th class="text-center" scope="row">
+                            {{ kunci.fullname }} 
+                        </th>        
+                        <th class="text-center" scope="row">
+                            {{ kunci.purpose }} 
+                        </th> 
+                        <th class="text-center" scope="row">
+                            {{ kunci.email }} 
+                        </th>    
+                        <th class="text-center" scope="row">
+                            {{ kunci.keytype }} 
+                        </th>    
+                        <th class="text-center" scope="row">
+                            {{ kunci.keysize }} 
+                        </th>                                                                           
+                        <th class="text-center" scope="row">
+                            <button class="btn btn-primary form-control open-modal parsing"  data-id ="{{ kunci.privkey }}"  data-toggle="modal" data-target="#myModal")><i class="fa fa-key fa-1.5x"></i></button>   
+                        </th>   
+                        <th class="text-center" scope="row">
+                            <button class="btn btn-success form-control open-modal parsing"  data-id ="{{ kunci.pubkey }}"  data-toggle="modal" data-target="#myModal")><i class="fa fa-key fa-1.5x"></i></button>   
+                        </th>   
+                        <th class="text-center" scope="row">
+                            {{ kunci.datehistory }} 
+                        </th>   
+                        <th class="text-center" scope="row">
+                            {{ kunci.expires }} 
+                        </th>                                       
+                    </tr>                  
+                {% endfor %}   
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close "  data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Private Key</h4>
+                    </div>
+                    <div class="modal-body">
+                        <textarea readonly rows="20" cols="75"  id="privatkey" name="privatkey">
+                        </textarea>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" style="width:100%" id="generate" name="generate" > <i class="fa fa-download"></i> Download</button>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(document).on("click", ".parsing", function () {
+     var privatkey = $(this).data('id');  
+     $(".modal-body #privatkey").val( privatkey );                  
+     $('#addBookDialog').modal('show');
+});
+
+</script>
+
+<script type="text/javascript">
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+}
+
+document.getElementById("generate").addEventListener("click", function(){
+    var text = document.getElementById("privatkey").value;
+    var filename = "kunci.pem";
+    
+    download(filename, text);
+}, false);
+</script>
+{% endblock %}
+

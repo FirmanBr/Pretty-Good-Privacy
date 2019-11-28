@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html> 
+  <head>
+    <meta charset="utf-8" >
+    <title>PKI</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.0.0/css/bootstrap-switch-button.min.css" rel="stylesheet">  
+      <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.0.0/js/bootstrap-switch-button.min.js"></script>
+      <script src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>   
+      <style>
+        .bs-example{
+	        margin: 20px;
+        }
+        @media screen and (min-width: 768px) {
+          .dropdown:hover .dropdown-menu, .btn-group:hover .dropdown-menu{
+		        display: block;
+	        }
+	        .dropdown-menu{
+		        margin-top: 0;
+	        }
+	        .dropdown-toggle{
+		        margin-bottom: 2px;
+	        }
+	        .navbar .dropdown-toggle, .nav-tabs .dropdown-toggle{
+		        margin-bottom: 0;
+	        }
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</head>
+  <body>
+
+  
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <ul class="nav navbar-nav">
+
+          <li><a class="navbar-link" href="{% url 'index' %}">Home</a></li>
+          <li><a class="navbar-link" href="{% url 'apps:historykey' %}">History</a></li>
+          
+        </ul>
+      
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block body_block %}
+      {% endblock %}
+    </div>
+    
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,138 @@
+
+{% extends "apps/base.html" %}
+{% block body_block %}
+
+<script type="text/javascript">
+
+function checkPasswordMatch() {
+    var password = $("#passphrase").val();
+    var confirmPassword = $("#confirmpassphrase").val();
+
+    if (password != confirmPassword)
+        $("#message").html("Passphrase do not match!");
+    else
+        $("#message").html("Passphrase match.");
+}
+
+$(document).ready(function () {
+   $("#confirmpassphrase").keyup(checkPasswordMatch);
+});
+
+</script>
+
+<div class="container">
+  <div class="jumbotron">
+
+    <h3>
+      <p align ="center">
+      </p>
+    </h3>
+
+    <form method="post" action="{% url 'apps:cakey' %}">
+      {% csrf_token %}
+
+        <div class="form-group row">
+          <label class="form-label col-md-3" for="username">Full Name</label>
+            <div class="col-md-9">
+              <input type="text" name="username"
+                maxlength="255"
+                class="form-control form-control-sm"
+                title="" required=""
+                id="username">
+            </div>
+        </div>     
+                    
+        <div class="form-group row">
+          <label class="form-label col-md-3" for="email">Email</label>
+            <div class="col-md-9">
+              <input type="text" name="email"
+                maxlength="255"
+                class="form-control form-control-sm"
+                title="" required=""
+                id="email">
+            </div>
+        </div>     
+
+        <div class="form-group row">
+          <label class="form-label col-md-3" for="purphose">Purpose</label>
+            <div class="col-md-9">
+              <input type="text" name="purphose"
+                maxlength="255"
+                class="form-control form-control-sm"
+                title="" required=""
+                id="purphose">
+            </div>
+        </div>   
+
+        <div class="form-group row">
+          <label class="form-label col-md-3" for="purphose">Key Type</label>
+            <div class="col-md-9">
+              <input readonly type="text" name="key"
+                maxlength="255"
+                class="form-control form-control-sm"
+                title="" required="" value ="RSA"
+                id="key">
+            </div>
+        </div>   
+
+        <div class="form-group row">
+          <label class="form-label col-md-3" for="purphose">Key Size</label>
+            <div class="col-md-9">
+              <input readonly type="text" name="keysize"
+                maxlength="255"
+                class="form-control form-control-sm"
+                title="" required="" value ="1024"
+                id="keysize">
+            </div>
+        </div>   
+
+        <div class="form-group row">
+          <label class="form-label col-md-3" for="passphrase">Passphrase</label>
+            <div class="col-md-9">
+              <input type="password" name="passphrase"
+                maxlength="255"
+                class="form-control form-control-sm"
+                title="" required=""
+                id="passphrase">
+            </div>
+        </div>            
+
+        <div class="form-group row">
+          <label class="form-label col-md-3" for="confirmpassphrase">Confirmation Passphrase</label>
+            <div class="col-md-9">
+              <input type="password" name="confirmpassphrase"
+                maxlength="255"
+                class="form-control form-control-sm"
+                title="" required=""
+                id="confirmpassphrase" onChange="checkPasswordMatch();">
+                <span id='message'></span>
+            </div>
+        </div>    
+
+        <div class="form-group row">
+          <label class="form-label col-md-3" for="activation">Activation Period</label>
+            <div class="col-md-9">
+              <input readonly type="text" name="activation"
+                maxlength="255"
+                class="form-control form-control-sm"
+                title="" required=""
+                id="activation" value = "3 Years">
+            </div>
+        </div>    
+
+        <div class="row">
+          <div class="col-12 text-center">
+            <div class="form-group">
+              <button type="submit" class="form-button btn btn-success btn pull-right" >
+              Submit
+              </button>
+            </div>
+          </div>
+        </div>
+        
+    </form>
+
+  </div>
+</div>
+{% endblock %}
+
