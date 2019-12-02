@@ -122,7 +122,7 @@ function download(filename, text) {
 document.getElementById("generate").addEventListener("click", function(){
 
     var text = document.getElementById("privatkey").value;
-    var filename = "private.pem";    
+    var filename = "private.pgp";    
     download(filename, text);
 
 }, false);
@@ -130,7 +130,7 @@ document.getElementById("generate").addEventListener("click", function(){
 document.getElementById("generatepublic").addEventListener("click", function(){
 
     var text = document.getElementById("publickey").value;
-    var filename = "public.pem";    
+    var filename = "public.pgp";    
     download(filename, text);
 
 }, false);

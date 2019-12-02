@@ -21,3 +21,4 @@ class ModelTest(TestCase):
         dept = PairKeyReq.objects.get(fullname='Firman Brilian')
         self.assertEqual(dept.email,'firmanbrilian@gmail.com')
 
+#tes

@@ -25,7 +25,7 @@ SECRET_KEY = '6v*w5&nqo!us5vk@dahahnw+5w0098wxohy*-5z04iw+85e%_3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1:8200','127.0.0.1', '192.168.88.109']
+ALLOWED_HOSTS = ['127.0.0.1:8200','127.0.0.1', '192.168.88.97']
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 TEMPLATE_DIR = os.path.join(BASE_DIR,'html')
